@@ -1,0 +1,14 @@
+hello world ! 
+
+
+composer create-project "laravel/laravel:^10.0" example-app
+
+php artisan make:middleware EnsureTokenIsValid
+
+php artisan make:controller UserController
+
+
+php artisan make:model TableName -mcr
+
+
+php artisan migrate:refresh
