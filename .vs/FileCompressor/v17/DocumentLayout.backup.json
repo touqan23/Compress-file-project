@@ -1,0 +1,215 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\compressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\compressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\filecompressor\\compressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\compressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\compressionalgorithms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\compressionalgorithms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\decompressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\decompressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\filecompressor\\decompressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\decompressform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\huffman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\huffman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\shannonfano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\shannonfano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\filecompressor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|c:\\users\\touqa2003\\downloads\\compress-file-project\\compress-file-project-main\\filecompressor\\comparisonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\comparisonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\filecompressor\\comparisonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A583084-BBDC-45AA-BD7F-1CAEDDA5AAF7}|FileCompressor\\FileCompressor.csproj|solutionrelative:filecompressor\\comparisonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DecompressForm.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\DecompressForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\DecompressForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\DecompressForm.cs",
+              "RelativeToolTip": "FileCompressor\\DecompressForm.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAUwKMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:59:19.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompressionAlgorithms.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressionAlgorithms.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\CompressionAlgorithms.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressionAlgorithms.cs*",
+              "RelativeToolTip": "FileCompressor\\CompressionAlgorithms.cs*",
+              "ViewState": "AgIAAHIAAAAAAAAAAADwv38AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T08:19:04.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShannonFano.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\ShannonFano.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\ShannonFano.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\ShannonFano.cs",
+              "RelativeToolTip": "FileCompressor\\ShannonFano.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwCUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:09:58.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CompressForm.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\CompressForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressForm.cs*",
+              "RelativeToolTip": "FileCompressor\\CompressForm.cs*",
+              "ViewState": "AgIAAKYAAAAAAAAAAADwv7EAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T10:06:41.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CompressForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\CompressForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\CompressForm.cs [Design]",
+              "RelativeToolTip": "FileCompressor\\CompressForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T07:29:14.95Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\Program.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\Program.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\Program.cs",
+              "RelativeToolTip": "FileCompressor\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:09:55.195Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DecompressForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\DecompressForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\DecompressForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\DecompressForm.cs [Design]",
+              "RelativeToolTip": "FileCompressor\\DecompressForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T15:12:17.242Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Huffman.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\Huffman.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\Huffman.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\Huffman.cs",
+              "RelativeToolTip": "FileCompressor\\Huffman.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAIwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:12:01.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\MainForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\MainForm.cs",
+              "RelativeToolTip": "FileCompressor\\MainForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T13:59:18.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\MainForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\MainForm.cs [Design]",
+              "RelativeToolTip": "FileCompressor\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T13:59:17.217Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ComparisonForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\ComparisonForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\ComparisonForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\source\\repos\\FileCompressor\\FileCompressor\\ComparisonForm.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\source\\repos\\FileCompressor\\FileCompressor\\ComparisonForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:58:27.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ComparisonForm.cs",
+              "DocumentMoniker": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\ComparisonForm.cs",
+              "RelativeDocumentMoniker": "FileCompressor\\ComparisonForm.cs",
+              "ToolTip": "C:\\Users\\Touqa2003\\Downloads\\Compress-file-project\\Compress-file-project-main\\FileCompressor\\ComparisonForm.cs",
+              "RelativeToolTip": "FileCompressor\\ComparisonForm.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA1wC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:41:27.444Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
