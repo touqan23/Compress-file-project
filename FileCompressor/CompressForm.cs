@@ -98,7 +98,6 @@ namespace FileCompressor
 
         private async void btnCompress_Click(object sender, EventArgs e)
         {
-
             if (selectedFiles.Count == 0)
             {
                 MessageBox.Show("يرجى اختيار ملفات أولاً.", "تحذير", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -127,6 +126,12 @@ namespace FileCompressor
             }
 
             btnCompress.Enabled = false;
+            List<FileToCompress> filesToCompress = selectedFiles.Select(filePath => new FileToCompress
+            {
+                FullPath = filePath,
+                RelativePath = Path.GetFileName(filePath) // أو احسب المسار النسبي حسب ما يلزمك
+            }).ToList();
+
 
             CompressionAlgorithms.Algorithm algo = algoCombo.SelectedItem.ToString() == "Huffman"
                 ? CompressionAlgorithms.Algorithm.Huffman
@@ -143,7 +148,7 @@ namespace FileCompressor
 
                 var results = await Task.Run(() =>
                 {
-                    return CompressionAlgorithms.CompressFiles(selectedFiles, savePath, algo, msg =>
+                    return CompressionAlgorithms.CompressFiles(filesToCompress, savePath, algo, msg =>
                     {
                         Console.WriteLine(msg);
                         processedFiles++;

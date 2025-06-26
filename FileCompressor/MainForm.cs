@@ -35,15 +35,7 @@ namespace FileCompressor
             decompressForm.Show();
         }
 
-        private void btnViewArchive_Click(object sender, EventArgs e)
-        {
-            this.Hide(); // Hide the main form
-            ArchiveViewerForm viewerForm = new ArchiveViewerForm();
-            viewerForm.FormClosed += (s, args) => this.Show(); // Re-show main when compress form is closed
-            viewerForm.Show();
-        }
-
-
+      
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

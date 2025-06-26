@@ -26,19 +26,27 @@ namespace FileCompressor
             public long ExecutionTimeMs;
             public long CompressedSize => CompressedData?.Length ?? 0;
         }
-
-        public static List<CompressionResult> CompressFiles(List<string> files, string saveDirectory, Algorithm algorithm,
-            Action<string> reportProgress, string password, ManualResetEventSlim pauseEvent, CancellationToken token)
+        public class FileToCompress
+        {
+            public string FullPath { get; set; }         // المسار الكامل الحقيقي
+            public string RelativePath { get; set; }     // المسار النسبي داخل الأرشيف
+        }
+        // تعديل دالة الضغط لتدعم ضغط الملفات مع المسار النسبي
+        public static List<CompressionResult> CompressFiles(
+            List<FileToCompress> files, string saveDirectory, Algorithm algorithm,
+            Action<string> reportProgress, string password,
+            ManualResetEventSlim pauseEvent, CancellationToken token)
         {
             var results = new List<CompressionResult>();
 
-            foreach (string filePath in files)
+            foreach (var file in files)
             {
                 token.ThrowIfCancellationRequested();
                 pauseEvent.Wait();
 
-                byte[] fileData = File.ReadAllBytes(filePath);
-                string fileName = Path.GetFileName(filePath);
+                byte[] fileData = File.ReadAllBytes(file.FullPath);
+                string relativePath = file.RelativePath.Replace('\\', '/');
+
 
                 Dictionary<byte, int> frequencies = CountFrequencies(fileData);
                 Dictionary<byte, string> codes = (algorithm == Algorithm.Huffman)
@@ -48,32 +56,47 @@ namespace FileCompressor
                 byte[] compressedData = Encode(fileData, codes);
 
                 byte[] finalData;
-                bool isEncrypted = false;
 
                 using (MemoryStream ms = new MemoryStream())
                 using (BinaryWriter writer = new BinaryWriter(ms))
                 {
+                    // 1. Flag: هل الملف مشفر؟
                     writer.Write((byte)(!string.IsNullOrEmpty(password) ? 0x01 : 0x00));
-                    writer.Write(codes.Count);
-                    foreach (var kvp in codes)
+
+                    // 2. بناء المحتوى الذي سيتم تشفيره أو نسخه مباشرة
+                    byte[] contentBytes;
+                    using (MemoryStream contentStream = new MemoryStream())
+                    using (BinaryWriter contentWriter = new BinaryWriter(contentStream))
                     {
-                        writer.Write(kvp.Key);
-                        writer.Write(kvp.Value);
+                        contentWriter.Write(relativePath);             // المسار النسبي
+                        contentWriter.Write(codes.Count);              // عدد الرموز
+                        foreach (var kvp in codes)
+                        {
+                            contentWriter.Write(kvp.Key);              // المفتاح (byte)
+                            contentWriter.Write(kvp.Value);            // الكود (سلسلة bits)
+                        }
+
+                        contentWriter.Write(compressedData.Length);    // طول البيانات المضغوطة
+                        contentWriter.Write(compressedData);           // البيانات المضغوطة فعليًا
+
+                        contentBytes = contentStream.ToArray();
                     }
 
-                    writer.Write(compressedData.Length);
-                    writer.Write(compressedData);
+                    // 3. التشفير (إذا طلب المستخدم كلمة مرور)
+                    if (!string.IsNullOrEmpty(password))
+                    {
+                        contentBytes = Encrypt(contentBytes, password);
+                    }
+
+                    // 4. كتابة طول البيانات النهائية + المحتوى
+                    writer.Write(contentBytes.Length); // هذا السطر ضروري لفك الضغط الصحيح
+                    writer.Write(contentBytes);        // البيانات (مشفرة أو لا)
 
                     finalData = ms.ToArray();
                 }
 
-                if (!string.IsNullOrEmpty(password))
-                {
-                    finalData = Encrypt(finalData, password);
-                    isEncrypted = true;
-                }
 
-                string compressedFileName = fileName + ".cmp";
+                string compressedFileName = Path.GetFileNameWithoutExtension(file.FullPath) + ".cmp";
                 string compressedFilePath = Path.Combine(saveDirectory, compressedFileName);
 
                 File.WriteAllBytes(compressedFilePath, finalData);
@@ -87,11 +110,37 @@ namespace FileCompressor
                     CompressionRatio = ratio
                 });
 
-                reportProgress?.Invoke($"✅ {fileName} مضغوط بنسبة {ratio:F2}%");
+                reportProgress?.Invoke($"✅ {relativePath} مضغوط بنسبة {ratio:F2}%");
             }
 
             return results;
         }
+
+        private static string GetCommonBasePath(List<string> paths)
+        {
+            if (paths == null || paths.Count == 0)
+                return string.Empty;
+
+            string[] separated = paths
+                .Select(p => Path.GetFullPath(p))
+                .OrderBy(p => p.Length)
+                .ToArray();
+
+            string first = separated[0];
+            string commonPath = first;
+
+            foreach (string path in separated)
+            {
+                while (!path.StartsWith(commonPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    commonPath = Path.GetDirectoryName(commonPath);
+                    if (string.IsNullOrEmpty(commonPath)) break;
+                }
+            }
+
+            return commonPath ?? "";
+        }
+
 
         public static CompressionResult TestCompression(string filePath, string outputDir, Algorithm algorithm)
         {
@@ -144,79 +193,105 @@ namespace FileCompressor
 
 
 
-        public static void DecompressFile(string compressedFilePath, string outputDirectory, Algorithm algorithm, string password = null, CancellationToken token = default)
+        public static async Task DecompressFile(string compressedFilePath, string outputDirectory, Algorithm algorithm,
+       string password = null, CancellationToken token = default, IProgress<int> progress = null)
         {
-            token.ThrowIfCancellationRequested();
-
-            if (!File.Exists(compressedFilePath))
-                throw new FileNotFoundException("الملف المضغوط غير موجود.", compressedFilePath);
-
-            if (!Directory.Exists(outputDirectory))
-                Directory.CreateDirectory(outputDirectory);
-
-            byte[] rawData = File.ReadAllBytes(compressedFilePath);
-
-            token.ThrowIfCancellationRequested();
-
-            bool isEncrypted;
-            try
+            await Task.Run(() =>
             {
-                using (var checkStream = new MemoryStream(rawData))
-                using (var checkReader = new BinaryReader(checkStream))
-                {
-                    isEncrypted = checkReader.ReadByte() == 0x01;
-                }
-            }
-            catch
-            {
-                throw new InvalidOperationException("❌ الملف تالف أو ليس ملف مضغوط صالح.");
-            }
+                token.ThrowIfCancellationRequested();
 
-            if (isEncrypted && string.IsNullOrEmpty(password))
-                throw new InvalidOperationException("❌ الملف مشفّر، الرجاء إدخال كلمة المرور.");
+                if (!File.Exists(compressedFilePath))
+                    throw new FileNotFoundException("الملف المضغوط غير موجود.", compressedFilePath);
 
-            if (isEncrypted)
-            {
+                if (!Directory.Exists(outputDirectory))
+                    Directory.CreateDirectory(outputDirectory);
+
+                progress?.Report(5);
+
+                byte[] rawData = File.ReadAllBytes(compressedFilePath);
+                token.ThrowIfCancellationRequested();
+
+                bool isEncrypted;
+               
                 try
                 {
-                    rawData = Decrypt(rawData, password);
+                    using (var checkStream = new MemoryStream(rawData))
+                    using (var checkReader = new BinaryReader(checkStream))
+                    {
+                        isEncrypted = checkReader.ReadByte() == 0x01;
+                    }
                 }
                 catch
                 {
-                    throw new InvalidOperationException("❌ فشل في فك التشفير، تأكد من صحة كلمة المرور.");
-                }
-            }
-
-            token.ThrowIfCancellationRequested();
-
-            using (MemoryStream ms = new MemoryStream(rawData))
-            using (BinaryReader reader = new BinaryReader(ms))
-            {
-                reader.ReadByte(); // flag
-                int codeCount = reader.ReadInt32();
-
-                var codes = new Dictionary<byte, string>();
-                for (int i = 0; i < codeCount; i++)
-                {
-                    token.ThrowIfCancellationRequested();
-
-                    byte key = reader.ReadByte();
-                    string value = reader.ReadString();
-                    codes[key] = value;
+                    throw new InvalidOperationException("❌ الملف تالف أو ليس ملف مضغوط صالح.");
                 }
 
-                int dataLength = reader.ReadInt32();
-                byte[] compressedData = reader.ReadBytes(dataLength);
+                progress?.Report(10);
+
+                if (isEncrypted && string.IsNullOrEmpty(password))
+                    throw new InvalidOperationException("❌ الملف مشفّر، الرجاء إدخال كلمة المرور.");
+
+               
 
                 token.ThrowIfCancellationRequested();
+                using (MemoryStream ms = new MemoryStream(rawData))
+                using (BinaryReader reader = new BinaryReader(ms))
+                {
+                    byte flag = reader.ReadByte();
+                     isEncrypted = flag == 0x01;
 
-                byte[] decompressedData = Decode(compressedData, codes);
+                    int contentLength = reader.ReadInt32();
 
-                string outputFileName = Path.GetFileNameWithoutExtension(compressedFilePath);
-                string outputFilePath = Path.Combine(outputDirectory, outputFileName);
-                File.WriteAllBytes(outputFilePath, decompressedData);
-            }
+                    // حماية من القيم غير المنطقية
+                    if (contentLength < 0 || contentLength > rawData.Length - 5) // -5 لأننا قرأنا 1 (flag) + 4 (int)
+                        throw new InvalidDataException("❌ تنسيق الملف غير صالح: حجم البيانات غير منطقي.");
+
+                    byte[] contentData = reader.ReadBytes(contentLength);
+
+                    if (isEncrypted)
+                    {
+                        if (string.IsNullOrEmpty(password))
+                            throw new InvalidOperationException("❌ الملف مشفّر، الرجاء إدخال كلمة المرور.");
+
+                        try
+                        {
+                            contentData = Decrypt(contentData, password);
+                        }
+                        catch
+                        {
+                            throw new InvalidOperationException("❌ فشل في فك التشفير، تأكد من صحة كلمة المرور.");
+                        }
+                    }
+
+                    using (MemoryStream contentStream = new MemoryStream(contentData))
+                    using (BinaryReader contentReader = new BinaryReader(contentStream))
+                    {
+                        string relativePath = contentReader.ReadString();
+                        int codeCount = contentReader.ReadInt32();
+
+                        var codes = new Dictionary<byte, string>();
+                        for (int i = 0; i < codeCount; i++)
+                        {
+                            byte key = contentReader.ReadByte();
+                            string value = contentReader.ReadString();
+                            codes[key] = value;
+                        }
+
+                        int dataLength = contentReader.ReadInt32();
+                        byte[] compressedData = contentReader.ReadBytes(dataLength);
+
+                        byte[] decompressedData = Decode(compressedData, codes);
+
+                        string outputFilePath = Path.Combine(outputDirectory, relativePath.Replace('/', Path.DirectorySeparatorChar));
+                        Directory.CreateDirectory(Path.GetDirectoryName(outputFilePath));
+                        File.WriteAllBytes(outputFilePath, decompressedData);
+                    }
+                progress?.Report(100);
+                }
+            });
         }
+
+
 
         private static Dictionary<byte, int> CountFrequencies(byte[] data)
         {

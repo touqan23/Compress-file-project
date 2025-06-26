@@ -41,6 +41,7 @@
             algoCombo = new ComboBox();
             label1 = new Label();
             btnCancel = new Button();
+            btnBrowseFolder = new Button();
             grpSecurity.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             // 
             // btnBrowseFile
             // 
-            btnBrowseFile.Location = new Point(227, 43);
+            btnBrowseFile.Location = new Point(305, 43);
             btnBrowseFile.Name = "btnBrowseFile";
             btnBrowseFile.Size = new Size(173, 34);
             btnBrowseFile.TabIndex = 2;
@@ -173,12 +174,23 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // btnBrowseFolder
+            // 
+            btnBrowseFolder.Location = new Point(109, 43);
+            btnBrowseFolder.Name = "btnBrowseFolder";
+            btnBrowseFolder.Size = new Size(173, 34);
+            btnBrowseFolder.TabIndex = 17;
+            btnBrowseFolder.Text = "المجلد المضغوط";
+            btnBrowseFolder.UseVisualStyleBackColor = true;
+            btnBrowseFolder.Click += btnBrowseFolder_Click;
+            // 
             // DecompressForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaShell;
             ClientSize = new Size(644, 574);
+            Controls.Add(btnBrowseFolder);
             Controls.Add(btnCancel);
             Controls.Add(algoCombo);
             Controls.Add(label1);
@@ -214,5 +226,6 @@
         private ComboBox algoCombo;
         private Label label1;
         private Button btnCancel;
+        private Button btnBrowseFolder;
     }
 }

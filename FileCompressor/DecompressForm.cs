@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -13,9 +14,7 @@ namespace FileCompressor
 {
     public partial class DecompressForm : Form
     {
-        private string archivePath = "";
-        private string outputPath = "";
-        private Dictionary<string, byte[]> fileContents = new Dictionary<string, byte[]>(); // الملفات داخل الأرشيف
+
         private CancellationTokenSource cancellationTokenSource;
 
         public DecompressForm()
@@ -91,21 +90,26 @@ namespace FileCompressor
             btnCancel.Enabled = true;
             lblStatus.Text = "الحالة: جاري فك الضغط...";
             progressBar.Style = ProgressBarStyle.Marquee;
+            var progress = new Progress<int>(value =>
+            {
+                progressBar.Style = ProgressBarStyle.Blocks;
+                progressBar.Value = value;
+                lblStatus.Text = $"الحالة: جاري فك الضغط... {value}%";
+            });
 
             cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
-                await Task.Run(() =>
-                {
-                    CompressionAlgorithms.DecompressFile(
-                        compressedFile,
-                        outputFolder,
-                        algo,
-                        password,
-                        cancellationTokenSource.Token
-                    );
-                });
+               
+                await CompressionAlgorithms.DecompressFile(
+     compressedFile,
+     outputFolder,
+     algo,
+     password,
+     cancellationTokenSource.Token,
+     progress
+ );
 
                 lblStatus.Text = "الحالة: تم فك الضغط بنجاح ✅";
                 progressBar.Style = ProgressBarStyle.Blocks;
@@ -149,6 +153,20 @@ namespace FileCompressor
             {
                 cancellationTokenSource.Cancel();
                 lblStatus.Text = "جاري الإلغاء...";
+                Application.Exit();
+            }
+        }
+
+        private void btnBrowseFolder_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "اختر مجلد";
+
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    txtCompressedFilePath.Text = folderDialog.SelectedPath;
+                }
             }
         }
     }
